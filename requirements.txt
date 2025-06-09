@@ -1,0 +1,13 @@
+flask
+flask-Session
+flask_login
+flask-cors
+flask-JWT-Extended
+flask_sqlalchemy
+SQLAlchemy
+gunicorn
+requests
+pandas
+matplotlib
+python-dotenv
+psycopg2-binary
