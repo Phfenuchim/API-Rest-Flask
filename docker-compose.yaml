@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      # Se quiser garantir PYTHONPATH (geralmente não precisa):
+      - PYTHONPATH=/app/src/main
+    command: gunicorn -b 0.0.0.0:5000 src.main.app:app
+    volumes:
+      - .:/app
