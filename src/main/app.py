@@ -6,6 +6,9 @@ import os
 from modules.users.controller.auth_controller import auth_blueprint
 from modules.smtp_sendtomail.controller.email_controller import email_blueprint
 from modules.users.controller.user_controller import users_blueprint
+from modules.access_control.controller.policy_controller import policy_blueprint
+from modules.access_control.controller.role_controller import role_blueprint
+
 
 from core.db import db
 from modules.users.domain.user_model import User
@@ -23,6 +26,9 @@ def create_app():
     # Register Blueprints: padrão de projeto
     app.register_blueprint(users_blueprint)
     app.register_blueprint(auth_blueprint)
+    
+    app.register_blueprint(policy_blueprint)
+    app.register_blueprint(role_blueprint)
     app.register_blueprint(email_blueprint)
 
     return app
