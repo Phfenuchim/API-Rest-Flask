@@ -1,5 +1,5 @@
 # API-Rest-Flask
-
+APi Rest em python em padrão MVC, com regras de usuários e politicas e envio de e-mails.
 # Deploy - cloud
 Configuração em nuvem, automação em bash, criação de service para iniciaclizar jutnamente a instância, caso necessario envie o arquivo .env via scp para a instancia.
 ## 1. Crie um systemctl
@@ -101,4 +101,26 @@ sudo certbot --nginx
 ## Analisar LOGs
 ```bash
 sudo tail -f var/log/nginx/access.log
+```
+## Teste o banco de dados localmente
+
+```bash
+db:Add commentMore actions
+    image: postgres:latest
+    container_name: postgres-container
+    restart: always
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.py
+      POSTGRES_DB: paysmart-db
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: "Postgres2022!"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./src/main/resources/db/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
 ```
